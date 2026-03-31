@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.testingsystem.client.controller.AdminPanelController"
+            prefHeight="600.0" prefWidth="1000.0" styleClass="main-pane">
+
+    <children>
+        <BorderPane>
+            <!-- Top Bar -->
+            <top>
+                <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="top-bar">
+                    <padding>
+                        <Insets top="10.0" right="20.0" bottom="10.0" left="20.0"/>
+                    </padding>
+                    
+                    <Label fx:id="panelTitleLabel" text="Admin Panel" styleClass="section-title"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <Button text="Back to Main" onAction="#handleBack"/>
+                </HBox>
+            </top>
+            
+            <!-- Content Area -->
+            <center>
+                <TabPane fx:id="adminTabPane" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <!-- Users Tab -->
+                        <Tab text="Users" closable="false">
+                            <VBox spacing="10.0">
+                                <padding>
+                                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                </padding>
+                                
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <Button text="Add User" onAction="#handleAddUser"/>
+                                    <Button text="Refresh" onAction="#handleRefreshUsers"/>
+                                    <TextField fx:id="userSearchField" promptText="Search users..." 
+                                               HBox.hgrow="ALWAYS" onAction="#handleSearchUsers"/>
+                                </HBox>
+                                
+                                <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="userIdColumn" text="ID" prefWidth="50.0"/>
+                                        <TableColumn fx:id="userLoginColumn" text="Login" prefWidth="120.0"/>
+                                        <TableColumn fx:id="userNameColumn" text="Name" prefWidth="200.0"/>
+                                        <TableColumn fx:id="userRoleColumn" text="Role" prefWidth="100.0"/>
+                                        <TableColumn fx:id="userStatusColumn" text="Status" prefWidth="80.0"/>
+                                        <TableColumn fx:id="userActionsColumn" text="Actions" prefWidth="200.0"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </Tab>
+                        
+                        <!-- Tests Tab -->
+                        <Tab text="Tests" closable="false">
+                            <VBox spacing="10.0">
+                                <padding>
+                                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                </padding>
+                                
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <Button text="Create Test" onAction="#handleCreateTest"/>
+                                    <Button text="Refresh" onAction="#handleRefreshTests"/>
+                                </HBox>
+                                
+                                <TableView fx:id="testsTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="testIdColumn" text="ID" prefWidth="50.0"/>
+                                        <TableColumn fx:id="testTitleColumn" text="Title" prefWidth="300.0"/>
+                                        <TableColumn fx:id="testTimeLimitColumn" text="Time (min)" prefWidth="80.0"/>
+                                        <TableColumn fx:id="testPassingScoreColumn" text="Pass %" prefWidth="70.0"/>
+                                        <TableColumn fx:id="testStatusColumn" text="Status" prefWidth="80.0"/>
+                                        <TableColumn fx:id="testActionsColumn" text="Actions" prefWidth="250.0"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </Tab>
+                        
+                        <!-- Assignments Tab -->
+                        <Tab text="Assignments" closable="false">
+                            <VBox spacing="10.0">
+                                <padding>
+                                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                </padding>
+                                
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <Button text="Assign Test" onAction="#handleAssignTest"/>
+                                    <Button text="Refresh" onAction="#handleRefreshAssignments"/>
+                                </HBox>
+                                
+                                <TableView fx:id="assignmentsTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="assignUserColumn" text="User" prefWidth="200.0"/>
+                                        <TableColumn fx:id="assignTestColumn" text="Test" prefWidth="250.0"/>
+                                        <TableColumn fx:id="assignDeadlineColumn" text="Deadline" prefWidth="150.0"/>
+                                        <TableColumn fx:id="assignAttemptsColumn" text="Attempts" prefWidth="80.0"/>
+                                        <TableColumn fx:id="assignStatusColumn" text="Status" prefWidth="100.0"/>
+                                        <TableColumn fx:id="assignActionsColumn" text="Actions" prefWidth="150.0"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </Tab>
+                        
+                        <!-- Results Tab -->
+                        <Tab text="Results" closable="false">
+                            <VBox spacing="10.0">
+                                <padding>
+                                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                </padding>
+                                
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <Button text="Refresh" onAction="#handleRefreshResults"/>
+                                    <ComboBox fx:id="testFilterCombo" promptText="Filter by test"/>
+                                </HBox>
+                                
+                                <TableView fx:id="resultsTable" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="resultUserColumn" text="User" prefWidth="200.0"/>
+                                        <TableColumn fx:id="resultTestColumn" text="Test" prefWidth="250.0"/>
+                                        <TableColumn fx:id="resultScoreColumn" text="Score" prefWidth="80.0"/>
+                                        <TableColumn fx:id="resultPassedColumn" text="Passed" prefWidth="80.0"/>
+                                        <TableColumn fx:id="resultDateColumn" text="Date" prefWidth="150.0"/>
+                                        <TableColumn fx:id="resultDurationColumn" text="Duration" prefWidth="100.0"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                        </Tab>
+                        
+                        <!-- Statistics Tab -->
+                        <Tab text="Statistics" closable="false">
+                            <VBox spacing="15.0">
+                                <padding>
+                                    <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+                                </padding>
+                                
+                                <Button text="Refresh Statistics" onAction="#handleRefreshStats"/>
+                                
+                                <GridPane hgap="20.0" vgap="15.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints minWidth="200.0"/>
+                                        <ColumnConstraints minWidth="200.0"/>
+                                    </columnConstraints>
+                                    
+                                    <TitledPane text="Overall Statistics" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                        <VBox fx:id="overallStatsBox" spacing="8.0"/>
+                                    </TitledPane>
+                                    
+                                    <TitledPane text="Test Statistics" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                        <VBox spacing="10.0">
+                                            <ComboBox fx:id="testStatsCombo" promptText="Select test"/>
+                                            <VBox fx:id="testStatsBox" spacing="8.0"/>
+                                        </VBox>
+                                    </TitledPane>
+                                </GridPane>
+                            </VBox>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

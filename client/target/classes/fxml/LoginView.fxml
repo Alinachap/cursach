@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.testingsystem.client.controller.LoginController"
+            prefHeight="400.0" prefWidth="500.0" styleClass="main-pane">
+
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="50.0"
+              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+            
+            <Label text="Professional Skills Testing System" textAlignment="CENTER" wrapText="true">
+                <font>
+                    <Font name="System Bold" size="20.0"/>
+                </font>
+            </Label>
+            
+            <Label text="Login" styleClass="section-title"/>
+            
+            <GridPane hgap="10.0" vgap="15.0" maxWidth="350.0">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100.0"/>
+                    <ColumnConstraints minWidth="200.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+                
+                <Label text="Login:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="loginField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           promptText="Enter your login"/>
+                
+                <Label text="Password:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                               promptText="Enter your password"/>
+                
+                <HBox spacing="10.0" alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <Button fx:id="loginButton" text="Login" defaultButton="true" onAction="#handleLogin"/>
+                    <Button fx:id="clearButton" text="Clear" cancelButton="true" onAction="#handleClear"/>
+                </HBox>
+            </GridPane>
+            
+            <Label fx:id="messageLabel" text="" styleClass="error-label" visible="false" managed="false"/>
+            
+        </VBox>
+        
+        <Label text="Default credentials: admin / password123" styleClass="hint-label"
+               AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"/>
+    </children>
+    
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+</AnchorPane>

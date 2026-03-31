@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.testingsystem.client.controller.ResultsViewController"
+            prefHeight="600.0" prefWidth="900.0" styleClass="main-pane">
+
+    <children>
+        <BorderPane>
+            <!-- Top Bar -->
+            <top>
+                <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="top-bar">
+                    <padding>
+                        <Insets top="10.0" right="20.0" bottom="10.0" left="20.0"/>
+                    </padding>
+                    
+                    <Label text="Test Results" styleClass="section-title"/>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <Button text="Back" onAction="#handleBack"/>
+                </HBox>
+            </top>
+            
+            <!-- Results Content -->
+            <center>
+                <VBox spacing="15.0">
+                    <padding>
+                        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                    </padding>
+                    
+                    <!-- Result Summary -->
+                    <TitledPane text="Result Summary" expanded="true">
+                        <VBox spacing="10.0">
+                            <HBox spacing="20.0" alignment="CENTER">
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <Label text="Score:"/>
+                                    <Label fx:id="scoreLabel" text="85%" styleClass="score-label">
+                                        <font>
+                                            <Font name="System Bold" size="24.0"/>
+                                        </font>
+                                    </Label>
+                                </VBox>
+                                
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <Label text="Status:"/>
+                                    <Label fx:id="statusLabel" text="PASSED" styleClass="status-passed">
+                                        <font>
+                                            <Font name="System Bold" size="18.0"/>
+                                        </font>
+                                    </Label>
+                                </VBox>
+                                
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <Label text="Duration:"/>
+                                    <Label fx:id="durationLabel" text="25 minutes"/>
+                                </VBox>
+                                
+                                <VBox alignment="CENTER" spacing="5.0">
+                                    <Label text="Date:"/>
+                                    <Label fx:id="dateLabel" text="2024-03-20"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </TitledPane>
+                    
+                    <!-- Questions Review -->
+                    <TitledPane text="Questions Review" expanded="true" VBox.vgrow="ALWAYS">
+                        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                            <VBox fx:id="questionsReviewContainer" spacing="15.0">
+                                <padding>
+                                    <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+                                </padding>
+                            </VBox>
+                        </ScrollPane>
+                    </TitledPane>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
