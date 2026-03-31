@@ -164,7 +164,11 @@ public class ResultService {
     public List<TestResultDTO> getUserResults(Long userId) throws ResultServiceException {
         try {
             List<TestResult> results = daoFactory.getTestResultDAO().findByUserId(userId);
-            return results.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestResultDTO> dtos = new ArrayList<>();
+            for (TestResult result : results) {
+                dtos.add(toDTO(result));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new ResultServiceException("Failed to get user results", e);
         }
@@ -180,7 +184,11 @@ public class ResultService {
     public List<TestResultDTO> getTestResults(Long testId) throws ResultServiceException {
         try {
             List<TestResult> results = daoFactory.getTestResultDAO().findByTestId(testId);
-            return results.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestResultDTO> dtos = new ArrayList<>();
+            for (TestResult result : results) {
+                dtos.add(toDTO(result));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new ResultServiceException("Failed to get test results", e);
         }
@@ -195,7 +203,11 @@ public class ResultService {
     public List<TestResultDTO> getAllResults() throws ResultServiceException {
         try {
             List<TestResult> results = daoFactory.getTestResultDAO().findAll();
-            return results.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestResultDTO> dtos = new ArrayList<>();
+            for (TestResult result : results) {
+                dtos.add(toDTO(result));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new ResultServiceException("Failed to get all results", e);
         }

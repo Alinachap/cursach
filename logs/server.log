@@ -1,0 +1,105 @@
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.ServerApp - Starting Professional Skills Testing System Server...
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.config.ConfigLoader - Configuration loaded from /server.properties
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.config.ServerConfig - ServerConfig initialized
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.ServerApp - Configuration loaded
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.ServerApp - Server port: 12345
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.ServerApp - Max threads: 10
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.ServerApp - Database URL: jdbc:postgresql://localhost:5432/testingsystem
+2026-03-31 15:04:48 [main] INFO  com.testingsystem.server.db.ConnectionPool - Initializing connection pool with size: 5
+2026-03-31 15:04:49 [main] ERROR com.testingsystem.server.db.ConnectionPool - Failed to create connection
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:444) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.7.1.jar:42.7.1]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:613) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:199) ~[java.sql:?]
+	at com.testingsystem.server.db.ConnectionPool.createConnection(ConnectionPool.java:105) ~[classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.initializePool(ConnectionPool.java:87) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.<init>(ConnectionPool.java:43) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.getInstance(ConnectionPool.java:59) [classes/:?]
+	at com.testingsystem.server.ServerApp.run(ServerApp.java:47) [classes/:?]
+	at com.testingsystem.server.ServerApp.main(ServerApp.java:29) [classes/:?]
+2026-03-31 15:04:49 [main] ERROR com.testingsystem.server.db.ConnectionPool - Failed to create connection
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:444) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.7.1.jar:42.7.1]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:613) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:199) ~[java.sql:?]
+	at com.testingsystem.server.db.ConnectionPool.createConnection(ConnectionPool.java:105) ~[classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.initializePool(ConnectionPool.java:87) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.<init>(ConnectionPool.java:43) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.getInstance(ConnectionPool.java:59) [classes/:?]
+	at com.testingsystem.server.ServerApp.run(ServerApp.java:47) [classes/:?]
+	at com.testingsystem.server.ServerApp.main(ServerApp.java:29) [classes/:?]
+2026-03-31 15:04:49 [main] ERROR com.testingsystem.server.db.ConnectionPool - Failed to create connection
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:444) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.7.1.jar:42.7.1]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:613) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:199) ~[java.sql:?]
+	at com.testingsystem.server.db.ConnectionPool.createConnection(ConnectionPool.java:105) ~[classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.initializePool(ConnectionPool.java:87) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.<init>(ConnectionPool.java:43) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.getInstance(ConnectionPool.java:59) [classes/:?]
+	at com.testingsystem.server.ServerApp.run(ServerApp.java:47) [classes/:?]
+	at com.testingsystem.server.ServerApp.main(ServerApp.java:29) [classes/:?]
+2026-03-31 15:04:49 [main] ERROR com.testingsystem.server.db.ConnectionPool - Failed to create connection
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:444) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.7.1.jar:42.7.1]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:613) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:199) ~[java.sql:?]
+	at com.testingsystem.server.db.ConnectionPool.createConnection(ConnectionPool.java:105) ~[classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.initializePool(ConnectionPool.java:87) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.<init>(ConnectionPool.java:43) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.getInstance(ConnectionPool.java:59) [classes/:?]
+	at com.testingsystem.server.ServerApp.run(ServerApp.java:47) [classes/:?]
+	at com.testingsystem.server.ServerApp.main(ServerApp.java:29) [classes/:?]
+2026-03-31 15:04:49 [main] ERROR com.testingsystem.server.db.ConnectionPool - Failed to create connection
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:693) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:203) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:258) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:263) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.makeConnection(Driver.java:444) ~[postgresql-42.7.1.jar:42.7.1]
+	at org.postgresql.Driver.connect(Driver.java:297) ~[postgresql-42.7.1.jar:42.7.1]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:613) ~[java.sql:?]
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:199) ~[java.sql:?]
+	at com.testingsystem.server.db.ConnectionPool.createConnection(ConnectionPool.java:105) ~[classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.initializePool(ConnectionPool.java:87) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.<init>(ConnectionPool.java:43) [classes/:?]
+	at com.testingsystem.server.db.ConnectionPool.getInstance(ConnectionPool.java:59) [classes/:?]
+	at com.testingsystem.server.ServerApp.run(ServerApp.java:47) [classes/:?]
+	at com.testingsystem.server.ServerApp.main(ServerApp.java:29) [classes/:?]
+2026-03-31 15:04:49 [main] INFO  com.testingsystem.server.db.ConnectionPool - Connection pool initialized with 0 connections
+2026-03-31 15:04:49 [main] INFO  com.testingsystem.server.ServerApp - Connection pool initialized with 5 connections
+2026-03-31 15:04:49 [main] INFO  com.testingsystem.server.ServerApp - Server is ready to accept connections
+2026-03-31 15:04:49 [main] INFO  com.testingsystem.server.network.ServerThread - Server started on port 12345
+2026-03-31 15:04:49 [main] INFO  com.testingsystem.server.network.ServerThread - Max threads: 10
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.ServerApp - Shutdown hook triggered
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.network.ServerThread - Stopping server...
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.network.ServerThread - Server socket closed
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.network.ServerThread - Thread pool shut down
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.db.ConnectionPool - Shutting down connection pool
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.db.ConnectionPool - Connection pool shut down
+2026-03-31 15:05:34 [Thread-0] INFO  com.testingsystem.server.network.ServerThread - Server stopped

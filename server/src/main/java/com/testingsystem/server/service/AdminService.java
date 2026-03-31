@@ -101,7 +101,11 @@ public class AdminService {
     public List<TestAssignmentDTO> getUserAssignments(Long userId) throws AdminServiceException {
         try {
             List<TestAssignment> assignments = daoFactory.getTestAssignmentDAO().findByUserId(userId);
-            return assignments.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestAssignmentDTO> dtos = new ArrayList<>();
+            for (TestAssignment assignment : assignments) {
+                dtos.add(toDTO(assignment));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new AdminServiceException("Failed to get user assignments", e);
         }
@@ -117,7 +121,11 @@ public class AdminService {
     public List<TestAssignmentDTO> getTestAssignments(Long testId) throws AdminServiceException {
         try {
             List<TestAssignment> assignments = daoFactory.getTestAssignmentDAO().findByTestId(testId);
-            return assignments.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestAssignmentDTO> dtos = new ArrayList<>();
+            for (TestAssignment assignment : assignments) {
+                dtos.add(toDTO(assignment));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new AdminServiceException("Failed to get test assignments", e);
         }
@@ -132,7 +140,11 @@ public class AdminService {
     public List<TestAssignmentDTO> getAllAssignments() throws AdminServiceException {
         try {
             List<TestAssignment> assignments = daoFactory.getTestAssignmentDAO().findAll();
-            return assignments.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestAssignmentDTO> dtos = new ArrayList<>();
+            for (TestAssignment assignment : assignments) {
+                dtos.add(toDTO(assignment));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new AdminServiceException("Failed to get all assignments", e);
         }
@@ -145,11 +157,15 @@ public class AdminService {
      * @return list of TestAssignmentDTOs
      * @throws AdminServiceException if retrieval fails
      */
-    public List<TestAssignmentDTO> getAssignmentsByStatus(AssignmentStatus status) 
+    public List<TestAssignmentDTO> getAssignmentsByStatus(AssignmentStatus status)
             throws AdminServiceException {
         try {
             List<TestAssignment> assignments = daoFactory.getTestAssignmentDAO().findByStatus(status);
-            return assignments.stream().map(this::toDTO).collect(Collectors.toList());
+            List<TestAssignmentDTO> dtos = new ArrayList<>();
+            for (TestAssignment assignment : assignments) {
+                dtos.add(toDTO(assignment));
+            }
+            return dtos;
         } catch (SQLException e) {
             throw new AdminServiceException("Failed to get assignments by status", e);
         }
