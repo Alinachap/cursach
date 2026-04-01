@@ -6,10 +6,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for TestAssignment entity.
- * Used for transferring test assignment data between client and server.
- */
 public class TestAssignmentDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,25 +19,9 @@ public class TestAssignmentDTO implements Serializable {
     private Integer attemptsLeft;
     private AssignmentStatus status;
 
-    /**
-     * Default constructor for serialization.
-     */
     public TestAssignmentDTO() {
     }
 
-    /**
-     * Constructs a TestAssignmentDTO with all fields.
-     *
-     * @param id the assignment ID
-     * @param userId the user ID
-     * @param testId the test ID
-     * @param userName the user's name
-     * @param testName the test title
-     * @param assignedDate the assignment date
-     * @param deadline the deadline for completion
-     * @param attemptsLeft remaining attempts
-     * @param status the assignment status
-     */
     public TestAssignmentDTO(Long id, Long userId, Long testId, String userName, String testName,
                              LocalDateTime assignedDate, LocalDateTime deadline,
                              Integer attemptsLeft, AssignmentStatus status) {
@@ -56,14 +36,6 @@ public class TestAssignmentDTO implements Serializable {
         this.status = status;
     }
 
-    /**
-     * Constructs a TestAssignmentDTO without ID (for creation).
-     *
-     * @param userId the user ID
-     * @param testId the test ID
-     * @param deadline the deadline for completion
-     * @param attemptsLeft remaining attempts
-     */
     public TestAssignmentDTO(Long userId, Long testId, LocalDateTime deadline, Integer attemptsLeft) {
         this.userId = userId;
         this.testId = testId;
@@ -72,8 +44,6 @@ public class TestAssignmentDTO implements Serializable {
         this.status = AssignmentStatus.ASSIGNED;
         this.assignedDate = LocalDateTime.now();
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -147,14 +117,9 @@ public class TestAssignmentDTO implements Serializable {
         this.status = status;
     }
 
-    /**
-     * Checks if the assignment is expired.
-     *
-     * @return true if deadline has passed and status is not completed
-     */
     public boolean isExpired() {
-        return deadline != null && 
-               LocalDateTime.now().isAfter(deadline) && 
+        return deadline != null &&
+               LocalDateTime.now().isAfter(deadline) &&
                status != AssignmentStatus.COMPLETED;
     }
 

@@ -19,10 +19,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-/**
- * Controller for the main view.
- * Handles navigation and displays role-specific content.
- */
 public class MainController implements Initializable {
     private static final Logger logger = LogManager.getLogger(MainController.class);
 
@@ -44,16 +40,12 @@ public class MainController implements Initializable {
         session = Session.getInstance();
     }
 
-    /**
-     * Initializes the view after loading.
-     */
     public void initializeView() {
         UserDTO user = session.getCurrentUser();
         if (user != null) {
             welcomeLabel.setText("Welcome, " + user.getFirstName() + "!");
             roleLabel.setText(user.getRole().getValue().toUpperCase());
-            
-            // Show appropriate menu
+
             if (user.getRole() == UserRole.ADMIN) {
                 specialistMenu.setVisible(false);
                 specialistMenu.setManaged(false);
@@ -77,7 +69,7 @@ public class MainController implements Initializable {
             }
             
             session.clear();
-            
+
             try {
                 sceneManager.switchToScene("/fxml/LoginView.fxml");
             } catch (IOException e) {
@@ -98,7 +90,6 @@ public class MainController implements Initializable {
         showMyResults();
     }
 
-    // Admin methods
     @FXML private void handleShowUsers() {
         showUsers();
     }
@@ -131,7 +122,6 @@ public class MainController implements Initializable {
         showStatistics();
     }
 
-    // Display methods
     private void showAvailableTests() {
         contentArea.getChildren().clear();
         
@@ -146,7 +136,7 @@ public class MainController implements Initializable {
                 contentArea.getChildren().add(new Label("No tests available"));
                 return;
             }
-            
+
             for (TestDTO test : tests) {
                 VBox testCard = createTestCard(test);
                 contentArea.getChildren().add(testCard);
@@ -201,7 +191,6 @@ public class MainController implements Initializable {
     }
 
     private void openTestPassingWindow(TestDTO test, TestResultDTO result) {
-        // In a full implementation, this would open a new window
         AlertHelper.showInfo("Test Started", "Test: " + test.getTitle() + "\nGood luck!");
     }
 
@@ -273,18 +262,17 @@ public class MainController implements Initializable {
             
             for (TestDTO test : tests) {
                 VBox card = createTestCard(test);
-                
-                // Add edit/delete buttons for admin
+
                 HBox actions = new HBox(10);
                 Button editBtn = new Button("Edit");
                 Button deleteBtn = new Button("Delete");
                 deleteBtn.setStyle("-fx-background-color: #e74c3c;");
-                
+
                 deleteBtn.setOnAction(e -> handleDeleteTest(test));
-                
+
                 actions.getChildren().addAll(editBtn, deleteBtn);
                 card.getChildren().add(actions);
-                
+
                 contentArea.getChildren().add(card);
             }
             
@@ -457,7 +445,7 @@ public class MainController implements Initializable {
             }
             return null;
         });
-        
+
         Optional<UserDTO> result = dialog.showAndWait();
         result.ifPresent(user -> {
             AlertHelper.showInfo("Success", "User created: " + user.getLogin());

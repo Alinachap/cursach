@@ -6,11 +6,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for Question entity.
- * Used for transferring question data between client and server.
- * Includes associated answer options.
- */
 public class QuestionDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -21,22 +16,9 @@ public class QuestionDTO implements Serializable {
     private Integer orderNum;
     private List<AnswerOptionDTO> answerOptions;
 
-    /**
-     * Default constructor for serialization.
-     */
     public QuestionDTO() {
     }
 
-    /**
-     * Constructs a QuestionDTO with all fields.
-     *
-     * @param id the question ID
-     * @param testId the test ID this question belongs to
-     * @param questionText the question text
-     * @param questionType the type of question (single/multiple)
-     * @param orderNum the display order
-     * @param answerOptions the list of answer options
-     */
     public QuestionDTO(Long id, Long testId, String questionText, QuestionType questionType,
                        Integer orderNum, List<AnswerOptionDTO> answerOptions) {
         this.id = id;
@@ -47,22 +29,12 @@ public class QuestionDTO implements Serializable {
         this.answerOptions = answerOptions;
     }
 
-    /**
-     * Constructs a QuestionDTO without ID (for creation).
-     *
-     * @param testId the test ID this question belongs to
-     * @param questionText the question text
-     * @param questionType the type of question
-     * @param orderNum the display order
-     */
     public QuestionDTO(Long testId, String questionText, QuestionType questionType, Integer orderNum) {
         this.testId = testId;
         this.questionText = questionText;
         this.questionType = questionType;
         this.orderNum = orderNum;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;

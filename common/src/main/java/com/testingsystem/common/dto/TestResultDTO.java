@@ -5,10 +5,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for TestResult entity.
- * Used for transferring test result data between client and server.
- */
 public class TestResultDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,26 +19,9 @@ public class TestResultDTO implements Serializable {
     private Boolean isPassed;
     private Integer attemptsUsed;
 
-    /**
-     * Default constructor for serialization.
-     */
     public TestResultDTO() {
     }
 
-    /**
-     * Constructs a TestResultDTO with all fields.
-     *
-     * @param id the result ID
-     * @param userId the user ID
-     * @param testId the test ID
-     * @param userName the user's name
-     * @param testName the test title
-     * @param startTime the test start time
-     * @param endTime the test end time
-     * @param scorePercent the score percentage
-     * @param isPassed whether the test was passed
-     * @param attemptsUsed number of attempts used
-     */
     public TestResultDTO(Long id, Long userId, Long testId, String userName, String testName,
                          LocalDateTime startTime, LocalDateTime endTime,
                          BigDecimal scorePercent, Boolean isPassed, Integer attemptsUsed) {
@@ -58,21 +37,12 @@ public class TestResultDTO implements Serializable {
         this.attemptsUsed = attemptsUsed;
     }
 
-    /**
-     * Constructs a TestResultDTO for a new test attempt.
-     *
-     * @param userId the user ID
-     * @param testId the test ID
-     * @param startTime the start time
-     */
     public TestResultDTO(Long userId, Long testId, LocalDateTime startTime) {
         this.userId = userId;
         this.testId = testId;
         this.startTime = startTime;
         this.attemptsUsed = 1;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -154,11 +124,6 @@ public class TestResultDTO implements Serializable {
         this.attemptsUsed = attemptsUsed;
     }
 
-    /**
-     * Gets the duration of the test in minutes.
-     *
-     * @return duration in minutes, or null if test hasn't ended
-     */
     public Long getDurationMinutes() {
         if (startTime == null || endTime == null) {
             return null;

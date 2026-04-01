@@ -11,7 +11,6 @@
 
     <children>
         <BorderPane>
-            <!-- Top Bar with Timer -->
             <top>
                 <HBox alignment="CENTER" spacing="20.0" styleClass="top-bar">
                     <padding>
@@ -34,8 +33,7 @@
                     <Button text="Submit Test" onAction="#handleSubmitTest" styleClass="submit-button"/>
                 </HBox>
             </top>
-            
-            <!-- Questions Area -->
+
             <center>
                 <ScrollPane fx:id="questionsScrollPane" fitToWidth="true">
                     <VBox fx:id="questionsContainer" spacing="20.0">
@@ -45,8 +43,7 @@
                     </VBox>
                 </ScrollPane>
             </center>
-            
-            <!-- Bottom Navigation -->
+
             <bottom>
                 <HBox alignment="CENTER" spacing="20.0">
                     <padding>

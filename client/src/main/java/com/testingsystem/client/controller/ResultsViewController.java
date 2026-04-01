@@ -13,10 +13,6 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Controller for the results view.
- * Displays test results and question review.
- */
 public class ResultsViewController implements Initializable {
     private static final Logger logger = LogManager.getLogger(ResultsViewController.class);
 
@@ -34,11 +30,6 @@ public class ResultsViewController implements Initializable {
         requestBuilder = new RequestBuilder();
     }
 
-    /**
-     * Sets up the view with result data.
-     *
-     * @param result the test result to display
-     */
     public void setupResult(TestResultDTO result) {
         this.currentResult = result;
         
@@ -59,8 +50,6 @@ public class ResultsViewController implements Initializable {
     }
 
     @FXML private void handleBack() {
-        // Navigate back to main view
-        // In a full implementation, this would use SceneManager
         questionsReviewContainer.getScene().getWindow().hide();
     }
 }

@@ -2,10 +2,6 @@ package com.testingsystem.server.model;
 
 import java.time.LocalDateTime;
 
-/**
- * Represents a test in the system.
- * Contains test configuration including time limit and passing score.
- */
 public class Test extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
@@ -15,23 +11,9 @@ public class Test extends BaseEntity {
     private Integer passingScore;
     private boolean isActive;
 
-    /**
-     * Default constructor for serialization.
-     */
     public Test() {
     }
 
-    /**
-     * Constructs a Test with all fields.
-     *
-     * @param id the test ID
-     * @param title the test title
-     * @param description the test description
-     * @param timeLimit the time limit in minutes
-     * @param passingScore the minimum passing score percentage
-     * @param isActive whether the test is active
-     * @param createdAt the creation timestamp
-     */
     public Test(Long id, String title, String description, Integer timeLimit,
                 Integer passingScore, boolean isActive, LocalDateTime createdAt) {
         super(id);
@@ -42,8 +24,6 @@ public class Test extends BaseEntity {
         this.isActive = isActive;
         this.setCreatedAt(createdAt);
     }
-
-    // Getters and Setters
 
     public String getTitle() {
         return title;

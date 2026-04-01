@@ -10,19 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of TestDAO using JDBC.
- * Provides database operations for test management.
- */
 public class TestDAOImpl implements TestDAO {
 
     private final ConnectionPool connectionPool;
 
-    /**
-     * Constructs a TestDAOImpl with the given connection pool.
-     *
-     * @param connectionPool the database connection pool
-     */
     public TestDAOImpl(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
@@ -183,9 +174,6 @@ public class TestDAOImpl implements TestDAO {
         }
     }
 
-    /**
-     * Executes a query and returns an Optional Test.
-     */
     private Optional<Test> executeQuery(PreparedStatement stmt) throws SQLException {
         try (ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {
@@ -195,9 +183,6 @@ public class TestDAOImpl implements TestDAO {
         }
     }
 
-    /**
-     * Executes a query and returns a list of Tests.
-     */
     private List<Test> executeQueryList(PreparedStatement stmt) throws SQLException {
         List<Test> tests = new ArrayList<>();
         try (ResultSet rs = stmt.executeQuery()) {
@@ -208,9 +193,6 @@ public class TestDAOImpl implements TestDAO {
         return tests;
     }
 
-    /**
-     * Maps a ResultSet row to a Test object.
-     */
     private Test mapResultSetToTest(ResultSet rs) throws SQLException {
         Test test = new Test();
         test.setId(rs.getLong("id"));
@@ -219,10 +201,10 @@ public class TestDAOImpl implements TestDAO {
         test.setTimeLimit(rs.getInt("time_limit"));
         test.setPassingScore(rs.getInt("passing_score"));
         test.setActive(rs.getBoolean("is_active"));
-        
+
         Timestamp createdAt = rs.getTimestamp("created_at");
         test.setCreatedAt(createdAt != null ? createdAt.toLocalDateTime() : null);
-        
+
         return test;
     }
 }

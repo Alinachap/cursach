@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of TestResultDAO using JDBC.
- */
 public class TestResultDAOImpl implements TestResultDAO {
 
     private final ConnectionPool connectionPool;

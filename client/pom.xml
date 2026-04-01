@@ -13,9 +13,6 @@
     <artifactId>client</artifactId>
     <packaging>jar</packaging>
 
-    <name>Client Module</name>
-    <description>JavaFX client application for professional skills testing</description>
-
     <dependencies>
         <!-- Common module -->
         <dependency>

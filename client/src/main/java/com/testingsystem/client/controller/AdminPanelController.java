@@ -20,10 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-/**
- * Controller for the admin panel.
- * Handles all administrative functions.
- */
 public class AdminPanelController implements Initializable {
     private static final Logger logger = LogManager.getLogger(AdminPanelController.class);
 
@@ -139,7 +135,6 @@ public class AdminPanelController implements Initializable {
     }
 
     @FXML private void handleAddUser() {
-        // Show create user dialog (similar to MainController)
         AlertHelper.showInfo("Create User", "Dialog would open here");
     }
 
@@ -201,8 +196,7 @@ public class AdminPanelController implements Initializable {
         try {
             allTests = requestBuilder.getTests(false);
             testsTable.getItems().setAll(allTests);
-            
-            // Update filter combo
+
             testFilterCombo.getItems().clear();
             testFilterCombo.getItems().add("All Tests");
             for (TestDTO test : allTests) {

@@ -1,17 +1,13 @@
-/* Main Application Styles */
-
 .root {
     -fx-font-family: "Segoe UI", Arial, sans-serif;
     -fx-font-size: 14px;
     -fx-background-color: #f5f5f5;
 }
 
-/* Main Pane */
 .main-pane {
     -fx-background-color: linear-gradient(to bottom, #ffffff, #f0f0f0);
 }
 
-/* Top Bar */
 .top-bar {
     -fx-background-color: #2c3e50;
     -fx-padding: 10px;
@@ -40,7 +36,6 @@
     -fx-background-color: #c0392b;
 }
 
-/* Sidebar */
 .sidebar {
     -fx-background-color: #34495e;
     -fx-padding: 10px;
@@ -64,14 +59,12 @@
     -fx-background-color: #3d566e;
 }
 
-/* Section Titles */
 .section-title {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fill: #2c3e50;
 }
 
-/* Buttons */
 .button {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
@@ -99,7 +92,6 @@
     -fx-background-color: #229954;
 }
 
-/* Text Fields */
 .text-field, .password-field, .text-area {
     -fx-background-color: white;
     -fx-border-color: #bdc3c7;
@@ -113,7 +105,6 @@
     -fx-effect: dropshadow(gaussian, rgba(52, 152, 219, 0.3), 5, 0, 0, 2);
 }
 
-/* Labels */
 .error-label {
     -fx-text-fill: #e74c3c;
     -fx-font-weight: bold;
@@ -124,13 +115,11 @@
     -fx-font-size: 12px;
 }
 
-/* Timer */
 .timer-label {
     -fx-text-fill: #e74c3c;
     -fx-font-size: 18px;
 }
 
-/* Score Labels */
 .score-label {
     -fx-text-fill: #2c3e50;
 }
@@ -143,7 +132,6 @@
     -fx-text-fill: #e74c3c;
 }
 
-/* Tables */
 .table-view {
     -fx-background-color: white;
     -fx-border-color: #bdc3c7;
@@ -167,7 +155,6 @@
     -fx-background-color: white;
 }
 
-/* Titled Pane */
 .titled-pane {
     -fx-background-color: transparent;
 }
@@ -185,7 +172,6 @@
     -fx-border-radius: 0 0 5px 5px;
 }
 
-/* Scroll Pane */
 .scroll-pane {
     -fx-background-color: transparent;
 }
@@ -194,7 +180,6 @@
     -fx-background-color: white;
 }
 
-/* Combo Box */
 .combo-box {
     -fx-background-color: white;
     -fx-border-color: #bdc3c7;
@@ -202,7 +187,6 @@
     -fx-background-radius: 5px;
 }
 
-/* Progress Bar */
 .progress-bar .track {
     -fx-background-color: #ecf0f1;
 }
@@ -211,7 +195,6 @@
     -fx-background-color: #3498db;
 }
 
-/* Dialog Pane */
 .dialog-pane {
     -fx-background-color: white;
 }
@@ -224,7 +207,6 @@
     -fx-text-fill: white;
 }
 
-/* List View */
 .list-view {
     -fx-background-color: white;
     -fx-border-color: #bdc3c7;
@@ -244,17 +226,14 @@
     -fx-text-fill: white;
 }
 
-/* Separator */
 .separator .line {
     -fx-background-color: #bdc3c7;
 }
 
-/* Radio Button and Check Box */
 .radio-button, .check-box {
     -fx-text-fill: #2c3e50;
 }
 
-/* Alert Dialogs */
 .alert-dialog .dialog-pane {
     -fx-background-color: white;
 }

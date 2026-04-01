@@ -25,8 +25,7 @@
                     <Button text="Back to Main" onAction="#handleBack"/>
                 </HBox>
             </top>
-            
-            <!-- Content Area -->
+
             <center>
                 <TabPane fx:id="adminTabPane" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
@@ -56,8 +55,7 @@
                                 </TableView>
                             </VBox>
                         </Tab>
-                        
-                        <!-- Tests Tab -->
+
                         <Tab text="Tests" closable="false">
                             <VBox spacing="10.0">
                                 <padding>
@@ -81,8 +79,7 @@
                                 </TableView>
                             </VBox>
                         </Tab>
-                        
-                        <!-- Assignments Tab -->
+
                         <Tab text="Assignments" closable="false">
                             <VBox spacing="10.0">
                                 <padding>
@@ -106,8 +103,7 @@
                                 </TableView>
                             </VBox>
                         </Tab>
-                        
-                        <!-- Results Tab -->
+
                         <Tab text="Results" closable="false">
                             <VBox spacing="10.0">
                                 <padding>
@@ -131,8 +127,7 @@
                                 </TableView>
                             </VBox>
                         </Tab>
-                        
-                        <!-- Statistics Tab -->
+
                         <Tab text="Statistics" closable="false">
                             <VBox spacing="15.0">
                                 <padding>

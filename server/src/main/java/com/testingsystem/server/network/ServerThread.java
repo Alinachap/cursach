@@ -14,32 +14,21 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Main server thread that accepts client connections.
- * Uses a thread pool for handling multiple clients concurrently.
- * Implements the Singleton pattern.
- */
 public class ServerThread {
     private static final Logger logger = LogManager.getLogger(ServerThread.class);
-    
+
     private static volatile ServerThread instance;
-    
+
     private final int port;
     private final int maxThreads;
     private final ConnectionPool connectionPool;
     private final Map<Long, UserDTO> authenticatedUsers;
     private final AtomicLong clientIdCounter;
-    
+
     private ExecutorService threadPool;
     private ServerSocket serverSocket;
     private volatile boolean running = false;
 
-    /**
-     * Private constructor for Singleton pattern.
-     *
-     * @param config the server configuration
-     * @param connectionPool the database connection pool
-     */
     private ServerThread(ServerConfig config, ConnectionPool connectionPool) {
         this.port = config.getServerPort();
         this.maxThreads = config.getMaxThreads();
@@ -48,13 +37,6 @@ public class ServerThread {
         this.clientIdCounter = new AtomicLong(0);
     }
 
-    /**
-     * Gets the singleton instance of ServerThread.
-     *
-     * @param config the server configuration
-     * @param connectionPool the database connection pool
-     * @return the ServerThread instance
-     */
     public static ServerThread getInstance(ServerConfig config, ConnectionPool connectionPool) {
         if (instance == null) {
             synchronized (ServerThread.class) {
@@ -66,18 +48,12 @@ public class ServerThread {
         return instance;
     }
 
-    /**
-     * Starts the server.
-     *
-     * @throws IOException if server socket cannot be created
-     */
     public void start() throws IOException {
         if (running) {
             logger.warn("Server is already running");
             return;
         }
 
-        // Create thread pool
         threadPool = new ThreadPoolExecutor(
                 maxThreads,
                 maxThreads * 2,
@@ -86,29 +62,26 @@ public class ServerThread {
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
 
-        // Create server socket
         serverSocket = new ServerSocket(port);
         serverSocket.setSoTimeout(1000);
-        
+
         running = true;
         logger.info("Server started on port {}", port);
         logger.info("Max threads: {}", maxThreads);
 
-        // Accept connections
         while (running) {
             try {
                 Socket clientSocket = serverSocket.accept();
                 clientSocket.setSoTimeout(30000);
-                
+
                 Long clientId = clientIdCounter.incrementAndGet();
                 ClientHandler clientHandler = new ClientHandler(
                         clientSocket, connectionPool, clientId, authenticatedUsers);
-                
+
                 threadPool.submit(clientHandler);
                 logger.debug("Submitted client {} handler to thread pool", clientId);
-                
+
             } catch (SocketTimeoutException e) {
-                // Continue accepting connections
             } catch (IOException e) {
                 if (running) {
                     logger.error("Error accepting connection", e);
@@ -117,14 +90,10 @@ public class ServerThread {
         }
     }
 
-    /**
-     * Stops the server.
-     */
     public void stop() {
         logger.info("Stopping server...");
         running = false;
 
-        // Close server socket
         if (serverSocket != null && !serverSocket.isClosed()) {
             try {
                 serverSocket.close();
@@ -134,7 +103,6 @@ public class ServerThread {
             }
         }
 
-        // Shutdown thread pool
         if (threadPool != null) {
             threadPool.shutdown();
             try {
@@ -148,7 +116,6 @@ public class ServerThread {
             }
         }
 
-        // Close connection pool
         if (connectionPool != null) {
             connectionPool.shutdown();
         }
@@ -156,45 +123,22 @@ public class ServerThread {
         logger.info("Server stopped");
     }
 
-    /**
-     * Checks if the server is running.
-     *
-     * @return true if running
-     */
     public boolean isRunning() {
         return running;
     }
 
-    /**
-     * Gets the number of connected clients.
-     *
-     * @return the number of authenticated clients
-     */
     public int getConnectedClientCount() {
         return authenticatedUsers.size();
     }
 
-    /**
-     * Gets the server port.
-     *
-     * @return the port
-     */
     public int getPort() {
         return port;
     }
 
-    /**
-     * Gets the thread pool.
-     *
-     * @return the executor service
-     */
     public ExecutorService getThreadPool() {
         return threadPool;
     }
 
-    /**
-     * Resets the singleton instance (for testing).
-     */
     public static synchronized void resetInstance() {
         if (instance != null) {
             instance.stop();

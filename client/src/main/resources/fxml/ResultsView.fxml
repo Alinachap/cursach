@@ -11,7 +11,6 @@
 
     <children>
         <BorderPane>
-            <!-- Top Bar -->
             <top>
                 <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="top-bar">
                     <padding>
@@ -25,15 +24,13 @@
                     <Button text="Back" onAction="#handleBack"/>
                 </HBox>
             </top>
-            
-            <!-- Results Content -->
+
             <center>
                 <VBox spacing="15.0">
                     <padding>
                         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
                     </padding>
-                    
-                    <!-- Result Summary -->
+
                     <TitledPane text="Result Summary" expanded="true">
                         <VBox spacing="10.0">
                             <HBox spacing="20.0" alignment="CENTER">
@@ -67,8 +64,7 @@
                             </HBox>
                         </VBox>
                     </TitledPane>
-                    
-                    <!-- Questions Review -->
+
                     <TitledPane text="Questions Review" expanded="true" VBox.vgrow="ALWAYS">
                         <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
                             <VBox fx:id="questionsReviewContainer" spacing="15.0">

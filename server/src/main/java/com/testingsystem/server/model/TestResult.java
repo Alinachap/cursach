@@ -3,10 +3,6 @@ package com.testingsystem.server.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Represents a test result for a user.
- * Stores score, pass/fail status, and timing information.
- */
 public class TestResult extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
@@ -19,25 +15,9 @@ public class TestResult extends BaseEntity {
     private Integer attemptsUsed;
     private String answersData;
 
-    /**
-     * Default constructor for serialization.
-     */
     public TestResult() {
     }
 
-    /**
-     * Constructs a TestResult with all fields.
-     *
-     * @param id the result ID
-     * @param userId the user ID
-     * @param testId the test ID
-     * @param startTime the start time
-     * @param endTime the end time
-     * @param scorePercent the score percentage
-     * @param isPassed whether the test was passed
-     * @param attemptsUsed number of attempts used
-     * @param answersData JSON data of user answers
-     */
     public TestResult(Long id, Long userId, Long testId, LocalDateTime startTime, LocalDateTime endTime,
                       BigDecimal scorePercent, Boolean isPassed, Integer attemptsUsed, String answersData) {
         super(id);
@@ -50,8 +30,6 @@ public class TestResult extends BaseEntity {
         this.attemptsUsed = attemptsUsed;
         this.answersData = answersData;
     }
-
-    // Getters and Setters
 
     public Long getUserId() {
         return userId;
@@ -117,11 +95,6 @@ public class TestResult extends BaseEntity {
         this.answersData = answersData;
     }
 
-    /**
-     * Gets the duration of the test in minutes.
-     *
-     * @return duration in minutes, or null if test hasn't ended
-     */
     public Long getDurationMinutes() {
         if (startTime == null || endTime == null) {
             return null;

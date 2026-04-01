@@ -3,10 +3,6 @@ package com.testingsystem.common.dto;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for AnswerOption entity.
- * Used for transferring answer option data between client and server.
- */
 public class AnswerOptionDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -16,22 +12,10 @@ public class AnswerOptionDTO implements Serializable {
     private boolean isCorrect;
     private Integer orderNum;
 
-    /**
-     * Default constructor for serialization.
-     */
     public AnswerOptionDTO() {
     }
 
-    /**
-     * Constructs an AnswerOptionDTO with all fields.
-     *
-     * @param id the answer option ID
-     * @param questionId the question ID this option belongs to
-     * @param optionText the option text
-     * @param isCorrect whether this is a correct answer
-     * @param orderNum the display order
-     */
-    public AnswerOptionDTO(Long id, Long questionId, String optionText, 
+    public AnswerOptionDTO(Long id, Long questionId, String optionText,
                            boolean isCorrect, Integer orderNum) {
         this.id = id;
         this.questionId = questionId;
@@ -40,22 +24,12 @@ public class AnswerOptionDTO implements Serializable {
         this.orderNum = orderNum;
     }
 
-    /**
-     * Constructs an AnswerOptionDTO without ID (for creation).
-     * Note: isCorrect is set to false by default for security.
-     *
-     * @param questionId the question ID this option belongs to
-     * @param optionText the option text
-     * @param orderNum the display order
-     */
     public AnswerOptionDTO(Long questionId, String optionText, Integer orderNum) {
         this.questionId = questionId;
         this.optionText = optionText;
         this.isCorrect = false;
         this.orderNum = orderNum;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;

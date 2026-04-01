@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of AnswerOptionDAO using JDBC.
- */
 public class AnswerOptionDAOImpl implements AnswerOptionDAO {
 
     private final ConnectionPool connectionPool;

@@ -5,6 +5,5 @@
       "Bash(mvn *)",
       "mcp__idea__get_run_configurations"
     ]
-  },
-  "$version": 3
+  }
 }

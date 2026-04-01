@@ -4,10 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for Test entity.
- * Used for transferring test data between client and server.
- */
 public class TestDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -19,23 +15,9 @@ public class TestDTO implements Serializable {
     private boolean isActive;
     private LocalDateTime createdAt;
 
-    /**
-     * Default constructor for serialization.
-     */
     public TestDTO() {
     }
 
-    /**
-     * Constructs a TestDTO with all fields.
-     *
-     * @param id the test ID
-     * @param title the test title
-     * @param description the test description
-     * @param timeLimit the time limit in minutes
-     * @param passingScore the minimum passing score percentage
-     * @param isActive whether the test is active
-     * @param createdAt the creation timestamp
-     */
     public TestDTO(Long id, String title, String description, Integer timeLimit,
                    Integer passingScore, boolean isActive, LocalDateTime createdAt) {
         this.id = id;
@@ -47,14 +29,6 @@ public class TestDTO implements Serializable {
         this.createdAt = createdAt;
     }
 
-    /**
-     * Constructs a TestDTO without ID and timestamps (for creation).
-     *
-     * @param title the test title
-     * @param description the test description
-     * @param timeLimit the time limit in minutes
-     * @param passingScore the minimum passing score percentage
-     */
     public TestDTO(String title, String description, Integer timeLimit, Integer passingScore) {
         this.title = title;
         this.description = description;
@@ -62,8 +36,6 @@ public class TestDTO implements Serializable {
         this.passingScore = passingScore;
         this.isActive = true;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;

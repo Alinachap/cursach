@@ -170,8 +170,7 @@ public class TestPassingController implements Initializable {
                         long minutes = remaining.toMinutes();
                         long seconds = remaining.getSeconds() % 60;
                         timerLabel.setText(String.format("%02d:%02d", minutes, seconds));
-                        
-                        // Warning color when less than 5 minutes
+
                         if (remaining.toMinutes() < 5) {
                             timerLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
                         }
@@ -223,15 +222,13 @@ public class TestPassingController implements Initializable {
             }
             
             TestResultDTO result = requestBuilder.submitTest(currentTest.getId(), answers);
-            
-            // Show result
+
             StringBuilder message = new StringBuilder("Test completed!\n\n");
             message.append("Score: ").append(result.getScorePercent()).append("%\n");
             message.append("Status: ").append(Boolean.TRUE.equals(result.getIsPassed()) ? "PASSED" : "FAILED");
-            
+
             AlertHelper.showInfo("Test Results", message.toString());
-            
-            // Close window
+
             Stage stage = (Stage) timerLabel.getScene().getWindow();
             stage.close();
             
@@ -250,9 +247,6 @@ public class TestPassingController implements Initializable {
         questionNumberLabel.setText("Question " + (currentQuestionIndex + 1) + " of " + questions.size());
     }
 
-    /**
-     * Cleans up resources when view is closed.
-     */
     public void cleanup() {
         if (timer != null) {
             timer.cancel();

@@ -6,10 +6,6 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * Data Transfer Object for User entity.
- * Used for transferring user data between client and server.
- */
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -21,24 +17,10 @@ public class UserDTO implements Serializable {
     private boolean isActive;
     private LocalDateTime createdAt;
 
-    /**
-     * Default constructor for serialization.
-     */
     public UserDTO() {
     }
 
-    /**
-     * Constructs a UserDTO with all fields.
-     *
-     * @param id the user ID
-     * @param login the user login
-     * @param firstName the user's first name
-     * @param lastName the user's last name
-     * @param role the user's role
-     * @param isActive whether the user is active
-     * @param createdAt the creation timestamp
-     */
-    public UserDTO(Long id, String login, String firstName, String lastName, 
+    public UserDTO(Long id, String login, String firstName, String lastName,
                    UserRole role, boolean isActive, LocalDateTime createdAt) {
         this.id = id;
         this.login = login;
@@ -49,14 +31,6 @@ public class UserDTO implements Serializable {
         this.createdAt = createdAt;
     }
 
-    /**
-     * Constructs a UserDTO without ID and timestamps (for creation).
-     *
-     * @param login the user login
-     * @param firstName the user's first name
-     * @param lastName the user's last name
-     * @param role the user's role
-     */
     public UserDTO(String login, String firstName, String lastName, UserRole role) {
         this.login = login;
         this.firstName = firstName;
@@ -64,8 +38,6 @@ public class UserDTO implements Serializable {
         this.role = role;
         this.isActive = true;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -123,11 +95,6 @@ public class UserDTO implements Serializable {
         this.createdAt = createdAt;
     }
 
-    /**
-     * Gets the full name of the user.
-     *
-     * @return first name and last name combined
-     */
     public String getFullName() {
         return firstName + " " + lastName;
     }

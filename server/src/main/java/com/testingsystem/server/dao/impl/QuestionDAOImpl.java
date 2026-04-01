@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of QuestionDAO using JDBC.
- */
 public class QuestionDAOImpl implements QuestionDAO {
 
     private final ConnectionPool connectionPool;

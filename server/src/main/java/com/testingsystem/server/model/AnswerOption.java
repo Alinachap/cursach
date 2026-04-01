@@ -1,9 +1,5 @@
 package com.testingsystem.server.model;
 
-/**
- * Represents an answer option for a question.
- * Each option has text and a flag indicating if it's correct.
- */
 public class AnswerOption extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
@@ -12,21 +8,9 @@ public class AnswerOption extends BaseEntity {
     private boolean isCorrect;
     private Integer orderNum;
 
-    /**
-     * Default constructor for serialization.
-     */
     public AnswerOption() {
     }
 
-    /**
-     * Constructs an AnswerOption with all fields.
-     *
-     * @param id the option ID
-     * @param questionId the question ID
-     * @param optionText the option text
-     * @param isCorrect whether this is a correct answer
-     * @param orderNum the display order
-     */
     public AnswerOption(Long id, Long questionId, String optionText, boolean isCorrect, Integer orderNum) {
         super(id);
         this.questionId = questionId;
@@ -34,8 +18,6 @@ public class AnswerOption extends BaseEntity {
         this.isCorrect = isCorrect;
         this.orderNum = orderNum;
     }
-
-    // Getters and Setters
 
     public Long getQuestionId() {
         return questionId;

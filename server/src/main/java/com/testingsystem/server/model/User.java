@@ -4,11 +4,6 @@ import com.testingsystem.common.enums.UserRole;
 
 import java.time.LocalDateTime;
 
-/**
- * Represents a user in the system.
- * Base class for AdminUser and SpecialistUser.
- * Implements the inheritance pattern for user types.
- */
 public class User extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
@@ -19,24 +14,9 @@ public class User extends BaseEntity {
     private UserRole role;
     private boolean isActive;
 
-    /**
-     * Default constructor for serialization.
-     */
     public User() {
     }
 
-    /**
-     * Constructs a User with all fields.
-     *
-     * @param id the user ID
-     * @param login the user login
-     * @param passwordHash the hashed password
-     * @param firstName the first name
-     * @param lastName the last name
-     * @param role the user role
-     * @param isActive whether the user is active
-     * @param createdAt the creation timestamp
-     */
     public User(Long id, String login, String passwordHash, String firstName, String lastName,
                 UserRole role, boolean isActive, LocalDateTime createdAt) {
         super(id);
@@ -48,8 +28,6 @@ public class User extends BaseEntity {
         this.isActive = isActive;
         this.setCreatedAt(createdAt);
     }
-
-    // Getters and Setters
 
     public String getLogin() {
         return login;
@@ -99,11 +77,6 @@ public class User extends BaseEntity {
         isActive = active;
     }
 
-    /**
-     * Gets the full name of the user.
-     *
-     * @return first name and last name combined
-     */
     public String getFullName() {
         return firstName + " " + lastName;
     }

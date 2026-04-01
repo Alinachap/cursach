@@ -15,10 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Request processor for handling client commands.
- * Routes commands to appropriate service methods.
- */
 public class RequestProcessor {
     private static final Logger logger = LogManager.getLogger(RequestProcessor.class);
 
@@ -30,15 +26,9 @@ public class RequestProcessor {
 
     private final Map<Long, UserDTO> authenticatedUsers;
 
-    /**
-     * Constructs a RequestProcessor.
-     *
-     * @param connectionPool the database connection pool
-     * @param authenticatedUsers map of authenticated users
-     */
     public RequestProcessor(ConnectionPool connectionPool, Map<Long, UserDTO> authenticatedUsers) {
         DAOFactory daoFactory = new DAOFactory(connectionPool);
-        
+
         this.authService = new AuthService(daoFactory);
         this.testService = new TestService(daoFactory);
         this.resultService = new ResultService(daoFactory);
@@ -47,16 +37,9 @@ public class RequestProcessor {
         this.authenticatedUsers = authenticatedUsers;
     }
 
-    /**
-     * Processes a client request.
-     *
-     * @param request the request string
-     * @param clientId the client ID
-     * @return the response string
-     */
     public String processRequest(String request, Long clientId) {
         logger.debug("Processing request: {}", request);
-        
+
         String[] parts = request.split(Protocol.SEPARATOR, 3);
         if (parts.length < 2) {
             return Protocol.createErrorResponse("UNKNOWN", Protocol.RESPONSE_BAD_REQUEST, "Invalid request format");
@@ -118,12 +101,12 @@ public class RequestProcessor {
                 case Protocol.CMD_GET_USER_STATS:
                     return handleGetUserStats(data, clientId);
                 default:
-                    return Protocol.createErrorResponse(command, Protocol.RESPONSE_BAD_REQUEST, 
+                    return Protocol.createErrorResponse(command, Protocol.RESPONSE_BAD_REQUEST,
                             "Unknown command: " + command);
             }
         } catch (Exception e) {
             logger.error("Error processing request: {}", command, e);
-            return Protocol.createErrorResponse(command, Protocol.RESPONSE_ERROR, 
+            return Protocol.createErrorResponse(command, Protocol.RESPONSE_ERROR,
                     e.getMessage() != null ? e.getMessage() : "Internal server error");
         }
     }
@@ -138,7 +121,7 @@ public class RequestProcessor {
         if (loginData == null) {
             throw new AuthService.AuthenticationException("Invalid login data format");
         }
-        
+
         String login = loginData.get("login");
         String password = loginData.get("password");
 
@@ -151,11 +134,6 @@ public class RequestProcessor {
 
         return Protocol.createSuccessResponse(Protocol.CMD_LOGIN,
                 new String(SerializationUtils.serialize(response), java.nio.charset.StandardCharsets.UTF_8));
-    }
-
-    private String handleLogout(Long clientId) {
-        authenticatedUsers.remove(clientId);
-        return Protocol.createSuccessResponse(Protocol.CMD_LOGOUT, "Logout successful");
     }
 
     private String handleGetTests(String data, Long clientId) throws Exception {

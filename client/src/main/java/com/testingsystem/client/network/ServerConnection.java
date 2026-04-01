@@ -10,15 +10,11 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Server connection manager using Singleton pattern.
- * Handles TCP/IP communication with the server.
- */
 public class ServerConnection {
     private static final Logger logger = LogManager.getLogger(ServerConnection.class);
-    
+
     private static volatile ServerConnection instance;
-    
+
     private Socket socket;
     private BufferedReader reader;
     private PrintWriter writer;
@@ -26,19 +22,11 @@ public class ServerConnection {
     private int serverPort;
     private volatile boolean connected = false;
 
-    /**
-     * Private constructor for Singleton pattern.
-     */
     private ServerConnection() {
         this.serverHost = Constants.DEFAULT_SERVER_HOST;
         this.serverPort = Constants.DEFAULT_SERVER_PORT;
     }
 
-    /**
-     * Gets the singleton instance of ServerConnection.
-     *
-     * @return the ServerConnection instance
-     */
     public static ServerConnection getInstance() {
         if (instance == null) {
             synchronized (ServerConnection.class) {
@@ -50,14 +38,6 @@ public class ServerConnection {
         return instance;
     }
 
-    /**
-     * Connects to the server.
-     *
-     * @param host the server host
-     * @param port the server port
-     * @return true if connection successful
-     * @throws IOException if connection fails
-     */
     public synchronized boolean connect(String host, int port) throws IOException {
         if (connected) {
             disconnect();
@@ -76,7 +56,7 @@ public class ServerConnection {
             connected = true;
             logger.info("Connected to server at {}:{}", host, port);
             return true;
-            
+
         } catch (IOException e) {
             logger.error("Failed to connect to server at {}:{}", host, port, e);
             connected = false;
@@ -84,19 +64,10 @@ public class ServerConnection {
         }
     }
 
-    /**
-     * Connects to the default server.
-     *
-     * @return true if connection successful
-     * @throws IOException if connection fails
-     */
     public boolean connect() throws IOException {
         return connect(serverHost, serverPort);
     }
 
-    /**
-     * Disconnects from the server.
-     */
     public synchronized void disconnect() {
         connected = false;
         
@@ -110,14 +81,6 @@ public class ServerConnection {
         }
     }
 
-    /**
-     * Sends a request to the server.
-     *
-     * @param command the command
-     * @param data the request data
-     * @return the server response
-     * @throws IOException if communication fails
-     */
     public synchronized String sendRequest(String command, String data) throws IOException {
         if (!connected || socket == null || socket.isClosed()) {
             throw new IOException("Not connected to server");
@@ -136,14 +99,6 @@ public class ServerConnection {
         return response;
     }
 
-    /**
-     * Sends a request with serialized object data.
-     *
-     * @param command the command
-     * @param data the data object
-     * @return the server response
-     * @throws IOException if communication fails
-     */
     public String sendRequest(String command, Object data) throws IOException {
         String serializedData;
         if (data instanceof String) {
@@ -156,14 +111,6 @@ public class ServerConnection {
         return sendRequest(command, serializedData);
     }
 
-    /**
-     * Sends a login request.
-     *
-     * @param login the login
-     * @param password the password
-     * @return the server response
-     * @throws IOException if communication fails
-     */
     public String login(String login, String password) throws IOException {
         Map<String, String> loginData = new HashMap<>();
         loginData.put("login", login);
@@ -171,36 +118,18 @@ public class ServerConnection {
         return sendRequest("LOGIN", loginData);
     }
 
-    /**
-     * Checks if connected to the server.
-     *
-     * @return true if connected
-     */
     public boolean isConnected() {
         return connected;
     }
 
-    /**
-     * Gets the server host.
-     *
-     * @return the host
-     */
     public String getServerHost() {
         return serverHost;
     }
 
-    /**
-     * Gets the server port.
-     *
-     * @return the port
-     */
     public int getServerPort() {
         return serverPort;
     }
 
-    /**
-     * Resets the singleton instance.
-     */
     public static synchronized void resetInstance() {
         if (instance != null) {
             instance.disconnect();

@@ -18,10 +18,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Controller for the login view.
- * Handles user authentication.
- */
 public class LoginController implements Initializable {
     private static final Logger logger = LogManager.getLogger(LoginController.class);
 
@@ -41,16 +37,12 @@ public class LoginController implements Initializable {
         requestBuilder = new RequestBuilder();
         sceneManager = SceneManager.getInstance();
         session = Session.getInstance();
-        
-        // Set up enter key handling
+
         passwordField.setOnAction(event -> handleLogin());
-        
+
         logger.info("Login view initialized");
     }
 
-    /**
-     * Handles the login button click.
-     */
     @FXML
     private void handleLogin() {
         String login = loginField.getText().trim();
@@ -72,8 +64,7 @@ public class LoginController implements Initializable {
         try {
             loginButton.setDisable(true);
             messageLabel.setVisible(false);
-            
-            // Connect to server if not connected
+
             ServerConnection connection = ServerConnection.getInstance();
             if (!connection.isConnected()) {
                 try {
@@ -84,18 +75,15 @@ public class LoginController implements Initializable {
                     return;
                 }
             }
-            
-            // Send login request
+
             var response = requestBuilder.login(login, password);
-            
-            // Extract user data from response
+
             UserDTO user = (UserDTO) response.get("data");
-            
+
             if (user != null) {
                 session.setCurrentUser(user);
                 logger.info("User {} logged in successfully", login);
-                
-                // Navigate to main view
+
                 loadMainView();
             } else {
                 showMessage("Login failed. Please check your credentials.", true);
@@ -123,12 +111,6 @@ public class LoginController implements Initializable {
         loginField.requestFocus();
     }
 
-    /**
-     * Shows a message to the user.
-     *
-     * @param message the message to show
-     * @param isError whether it's an error message
-     */
     private void showMessage(String message, boolean isError) {
         messageLabel.setText(message);
         messageLabel.setVisible(true);
@@ -139,21 +121,16 @@ public class LoginController implements Initializable {
         }
     }
 
-    /**
-     * Loads the main view after successful login.
-     */
     private void loadMainView() {
         try {
             UserDTO user = session.getCurrentUser();
-            
-            // Load appropriate view based on role
+
             if (user.getRole() == UserRole.ADMIN) {
                 sceneManager.switchToScene("/fxml/MainView.fxml");
             } else {
                 sceneManager.switchToScene("/fxml/MainView.fxml");
             }
-            
-            // Get controller and initialize with user data
+
             MainController controller = sceneManager.getController("/fxml/MainView.fxml", MainController.class);
             controller.initializeView();
             

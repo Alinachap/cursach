@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of TestAssignmentDAO using JDBC.
- */
 public class TestAssignmentDAOImpl implements TestAssignmentDAO {
 
     private final ConnectionPool connectionPool;

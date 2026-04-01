@@ -11,19 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Implementation of UserDAO using JDBC.
- * Provides database operations for user management.
- */
 public class UserDAOImpl implements UserDAO {
 
     private final ConnectionPool connectionPool;
 
-    /**
-     * Constructs a UserDAOImpl with the given connection pool.
-     *
-     * @param connectionPool the database connection pool
-     */
     public UserDAOImpl(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
@@ -221,13 +212,6 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    /**
-     * Executes a query and returns an Optional User.
-     *
-     * @param stmt the prepared statement
-     * @return Optional containing the user if found
-     * @throws SQLException if a database error occurs
-     */
     private Optional<User> executeQuery(PreparedStatement stmt) throws SQLException {
         try (ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {
@@ -237,13 +221,6 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    /**
-     * Executes a query and returns a list of Users.
-     *
-     * @param stmt the prepared statement
-     * @return list of users
-     * @throws SQLException if a database error occurs
-     */
     private List<User> executeQueryList(PreparedStatement stmt) throws SQLException {
         List<User> users = new ArrayList<>();
         try (ResultSet rs = stmt.executeQuery()) {
@@ -254,13 +231,6 @@ public class UserDAOImpl implements UserDAO {
         return users;
     }
 
-    /**
-     * Maps a ResultSet row to a User object.
-     *
-     * @param rs the result set
-     * @return the mapped User
-     * @throws SQLException if a database error occurs
-     */
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
         User user = new User();
         user.setId(rs.getLong("id"));
@@ -270,10 +240,10 @@ public class UserDAOImpl implements UserDAO {
         user.setLastName(rs.getString("last_name"));
         user.setRole(UserRole.fromValue(rs.getString("role")));
         user.setActive(rs.getBoolean("is_active"));
-        
+
         Timestamp createdAt = rs.getTimestamp("created_at");
         user.setCreatedAt(createdAt != null ? createdAt.toLocalDateTime() : null);
-        
+
         return user;
     }
 }

@@ -11,7 +11,6 @@
 
     <children>
         <BorderPane>
-            <!-- Top Bar -->
             <top>
                 <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="top-bar">
                     <padding>
@@ -30,49 +29,45 @@
                     <Button text="Logout" onAction="#handleLogout" styleClass="logout-button"/>
                 </HBox>
             </top>
-            
-            <!-- Left Sidebar -->
+
             <left>
                 <VBox spacing="10.0" styleClass="sidebar" prefWidth="200.0">
                     <padding>
                         <Insets top="20.0" right="10.0" bottom="20.0" left="10.0"/>
                     </padding>
-                    
-                    <!-- Specialist Menu -->
+
                     <VBox fx:id="specialistMenu" spacing="5.0">
                         <Button text="Available Tests" onAction="#handleShowTests" maxWidth="Infinity"/>
                         <Button text="My Assignments" onAction="#handleShowAssignments" maxWidth="Infinity"/>
                         <Button text="My Results" onAction="#handleShowResults" maxWidth="Infinity"/>
                     </VBox>
-                    
-                    <!-- Admin Menu -->
+
                     <VBox fx:id="adminMenu" spacing="5.0" visible="false" managed="false">
                         <Label text="User Management" styleClass="menu-header"/>
                         <Button text="All Users" onAction="#handleShowUsers" maxWidth="Infinity"/>
                         <Button text="Create User" onAction="#handleCreateUser" maxWidth="Infinity"/>
                         
                         <Separator/>
-                        
+
                         <Label text="Test Management" styleClass="menu-header"/>
                         <Button text="All Tests" onAction="#handleShowAllTests" maxWidth="Infinity"/>
                         <Button text="Create Test" onAction="#handleCreateTest" maxWidth="Infinity"/>
                         
                         <Separator/>
-                        
+
                         <Label text="Assignments" styleClass="menu-header"/>
                         <Button text="Assign Test" onAction="#handleAssignTest" maxWidth="Infinity"/>
                         <Button text="View Assignments" onAction="#handleViewAssignments" maxWidth="Infinity"/>
                         
                         <Separator/>
-                        
+
                         <Label text="Results &amp; Stats" styleClass="menu-header"/>
                         <Button text="All Results" onAction="#handleViewResults" maxWidth="Infinity"/>
                         <Button text="Statistics" onAction="#handleShowStatistics" maxWidth="Infinity"/>
                     </VBox>
                 </VBox>
             </left>
-            
-            <!-- Main Content -->
+
             <center>
                 <ScrollPane fx:id="contentScrollPane" fitToWidth="true">
                     <VBox fx:id="contentArea" spacing="15.0">
